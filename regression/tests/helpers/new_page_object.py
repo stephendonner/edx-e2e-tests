@@ -19,7 +19,7 @@ class NewPageObject(PageObject):
             BrokenPromise: The timeout is exceeded without the page loading successfully.
         """
 
-        def _is_document_ready_interactive():
+        def _is_document_interactive():
             """
             Check the loading state of the document to ensure the document is
             in interactive mode
@@ -51,7 +51,7 @@ class NewPageObject(PageObject):
             # time relax the condition and check for the state to become
             # interactive
             EmptyPromise(
-                _is_document_ready_interactive,
+                _is_document_interactive,
                 "The document is in interactive mode.",
                 timeout=timeout
             ).fulfill()
