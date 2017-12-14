@@ -21,8 +21,8 @@ class NewPageObject(PageObject):
 
         def _is_document_ready_interactive():
             """
-            Check the loading state of the document to ensure the document and all sub-resources
-            have finished loading (the document load event has been fired.)
+            Check the loading state of the document to ensure the document is
+            in interactive mode
             """
             return self.browser.execute_script(
                 "return document.readyState=='interactive'")
@@ -36,6 +36,9 @@ class NewPageObject(PageObject):
             return self.browser.execute_script(
                 "return document.readyState=='complete'")
 
+        # Wait for page to laod completely i.e. for document.readyState to
+        # become complete
+
         try:
             EmptyPromise(
                 _is_document_ready,
@@ -44,9 +47,12 @@ class NewPageObject(PageObject):
             ).fulfill()
         except BrokenPromise:
 
+            # If document.readyState does not become complete after a specific
+            # time relax the condition and check for the state to become
+            # interactive
             EmptyPromise(
                 _is_document_ready_interactive,
-                "The document and all sub-resources have finished loading.",
+                "The document is in interactive mode.",
                 timeout=timeout
             ).fulfill()
 
