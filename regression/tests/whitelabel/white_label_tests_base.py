@@ -1,11 +1,13 @@
 """
 Base class for white label tests
 """
+import os
+
 from bok_choy.web_app_test import WebAppTest
 
 from regression.pages.whitelabel.const import (
-    ECOMMERCE_URL_WITHOUT_AUTH,
-    URL_WITHOUT_AUTH
+    ECOM_URL,
+    LMS_URL
 )
 from regression.pages.whitelabel.dashboard_page import DashboardPageExtended
 from regression.pages.whitelabel.home_page import HomePage
@@ -67,7 +69,7 @@ class WhiteLabelTestsBaseClass(WebAppTest):
         logout using api
         """
         logout_api = LogoutApi()
-        logout_api.logout_url = '{}{}'.format(URL_WITHOUT_AUTH, 'logout')
+        logout_api.logout_url = os.path.join(LMS_URL, 'logout')
         logout_api.cookies = self.browser.get_cookies()
         logout_api.logout()
 
@@ -76,9 +78,6 @@ class WhiteLabelTestsBaseClass(WebAppTest):
         Use ecommerce cookies to logout
         """
         logout_api = LogoutApi()
-        logout_api.logout_url = '{}{}'.format(
-            ECOMMERCE_URL_WITHOUT_AUTH,
-            'logout'
-        )
+        logout_api.logout_url = os.path.join(ECOM_URL, 'logout')
         logout_api.cookies = self.ecom_cookies
         logout_api.logout()

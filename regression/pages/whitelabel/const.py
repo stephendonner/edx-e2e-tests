@@ -3,62 +3,35 @@
 List of constants to be used throughout the tests
 """
 import os
-from regression.pages import BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD
+
+from regression.pages.whitelabel import (
+    LMS_URL,
+    ECOM_URL,
+    ORG
+)
 
 # Global password
 PASSWORD = os.environ.get('GLOBAL_PASSWORD')
 
 # Client information for access token
-OAUTH_CLIENT_ID = os.environ.get('OAUTH_CLIENT_ID')
-OAUTH_CLIENT_SECRET = os.environ.get('OAUTH_CLIENT_SECRET')
-
-BASIC_AUTH = BASIC_AUTH_USERNAME + ":" + BASIC_AUTH_PASSWORD + "@"
-
-# Select the Org for which to run the tests
-DEFAULT_ORG = 'HarvardMedGlobalAcademy'
-
-ORG = os.environ.get('ORG', DEFAULT_ORG)
+SANDBOX_CLIENT_ID = "ecommerce-key-{}".format(ORG.lower())
+OAUTH_CLIENT_ID = os.environ.get('OAUTH_CLIENT_ID', SANDBOX_CLIENT_ID)
+SANDBOX_CLIENT_SECRET = "ecommerce-secret"
+OAUTH_CLIENT_SECRET = os.environ.get(
+    'OAUTH_CLIENT_SECRET',
+    SANDBOX_CLIENT_SECRET
+)
 
 # Organization Based Settings
 ##############################################################################
-# E-commerce raw url
-RAW_ECOMMERCE_URL = {
-    'HarvardMedGlobalAcademy':
-        u'https://{}payments.globalacademy-stage.hms.harvard.edu/',
-    'HarvardXPLUS': u'https://{}stage-payments.harvardxplus.harvard.edu/',
-    'MITxPRO': u'https://{}payments.stage.mitxpro.mit.edu/'
-}
 
-# BASIC raw URL
-RAW_URL = {
-    'HarvardMedGlobalAcademy':
-        u'https://{}globalacademy-stage.hms.harvard.edu/',
-    'HarvardXPLUS': u'https://{}stage-courses.harvardxplus.harvard.edu/',
-    'MITxPRO': u'https://{}stage.mitxpro.mit.edu/'
-}
+ECOMMERCE_API_URL = os.path.join(ECOM_URL, 'api/v2/')
 
-# E-commerce urls
-ECOMMERCE_URL_WITHOUT_AUTH = RAW_ECOMMERCE_URL[ORG].format("")
 
-ECOMMERCE_URL_WITH_AUTH = RAW_ECOMMERCE_URL[ORG].format(BASIC_AUTH)
-
-# BASIC URLs
-URL_WITHOUT_AUTH = RAW_URL[ORG].format("")
-
-URL_WITH_AUTH = RAW_URL[ORG].format(BASIC_AUTH)
-
-ECOMMERCE_API_URL = ECOMMERCE_URL_WITHOUT_AUTH + 'api/v2/'
-
-ENROLLMENT_API_URL = URL_WITHOUT_AUTH + 'api/enrollment/v1'
+ENROLLMENT_API_URL = os.path.join(LMS_URL, 'api/enrollment/v1')
 
 CYBERSOURCE_CHECKOUT_URL = \
     u'https://testsecureacceptance.cybersource.com/checkout'
-
-PROF_COURSE_ID = u'course-v1:{}+E2E+2018'.format(ORG)
-
-PROF_COURSE_TITLE = u'{}-E2E-Test'.format(ORG)
-
-PROF_COURSE_PRICE = 167.0
 
 EMAIL_SENDER_ACCOUNTS = {
     'HarvardMedGlobalAcademy': 'globalacademy@hms.harvard.edu',
@@ -184,9 +157,9 @@ SAMPLE_LANGUAGES = [
     u'Tonga (Tonga Islands)'
 ]
 
-SELECTED_COUNTRY = u'Pakistan'
+SELECTED_COUNTRY = u'United States of America'
 
-SELECTED_LANGUAGE = u'Urdu'
+SELECTED_LANGUAGE = u'English'
 
 UNUSED_REGISTRATION_FIELDS_MAPPING = {
     "MITxPRO": ["profession", "specialty"],

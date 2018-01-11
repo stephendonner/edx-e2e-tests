@@ -42,6 +42,25 @@ def get_course_info():
     }
 
 
+def get_wl_course_info(org, num, run):
+    """
+    Returns the course info of the course that we use for
+    the wl regression tests.
+    Arguments:
+        org
+        num
+        run
+    Returns:
+        Course Info
+    """
+    return {
+        'course_org': org,
+        'course_num': num,
+        'course_run': run,
+        'display_name': "{}-{}-Test".format(org, num)
+    }
+
+
 def get_course_display_name():
     """
     Returns the course info of the course that we use for

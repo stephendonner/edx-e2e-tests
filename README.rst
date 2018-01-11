@@ -154,20 +154,20 @@ Before running whitelabel tests please ensure that these environment variables a
 
 .. code:: bash
 
+    ==> TEST_ENV (Only required if tests are not running on stage, for example for stage just assign value `sandbox')
+    ==> TARGET_DNS (Only required if tests are not running on stage, provide DNS part for example just provide "helio" for "https://mitxpro-helio.sandbox.edx.org")
+    ==> ORG (If no value is provided by default the tests will run against MITxPRO)
     ==> BASIC_AUTH_USER
     ==> BASIC_AUTH_PASSWORD
-    ==> USER_LOGIN_EMAIL
-    ==> USER_LOGIN_PASSWORD
-    ==> COURSE_RUN
-    ==> COURSE_DISPLAY_NAME
-    ==> COURSE_NUMBER
-    ==> COURSE_ORG
     ==> GLOBAL_PASSWORD
     ==> STAFF_USER_EMAIL
-    ==> TEST_EMAIL_SERVICE
-    ==> TEST_EMAIL_ACCOUNT
-    ==> TEST_EMAIL_PASSWORD
-    ==> ACCESS_TOKEN
+    ==> OAUTH_CLIENT_ID
+    ==> OAUTH_CLIENT_SECRET
+    ==> COURSE_RUN (Optional, use only if you are using a value other than default)
+    ==> COURSE_DISPLAY_NAME (Optional, use only if you are using a value other than default)
+    ==> COURSE_NUMBER (Optional, use only if you are using a value other than default)
+    ==> COURSE_ORG (Optional, use only if you are using a value other than specified in ORG var)
+
 
 
 To run all the tests in the file:
