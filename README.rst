@@ -150,12 +150,35 @@ To update page objects installed from external repos:
 How to run Whitelabel tests
 ----------------------------
 
-Before running whitelabel tests please ensure that these environment variables are set.
+
+1. Before running the commands change your working directory to `edx-e2e-tests`.
 
 .. code:: bash
 
-    ==> TEST_ENV (Only required if tests are not running on stage, for example for stage just assign value `sandbox')
-    ==> TARGET_DNS (Only required if tests are not running on stage, provide DNS part for example just provide "helio" for "https://mitxpro-helio.sandbox.edx.org")
+    cd edx-e2e-tests/
+
+2. Install the requirements
+
+.. code:: bash
+
+    pip install -r requirements/base.txt
+
+3. Install the page objects for the application from the edx platform repo. This will
+   clone the entire repo into lib/edx-platform so that it can use the page objects and
+   helper methods from common/test/acceptance. We also install capa and xmodule into the
+   virtual environment from common/lib.
+
+
+.. code:: bash
+
+    paver install_pages
+
+4. Set these Environment variables
+
+.. code:: bash
+
+    ==> TEST_ENV (Only required if tests are not running on stage, e.g. for sandbox just assign value `sandbox')
+    ==> TARGET_DNS (Only required if tests are not running on stage, just provide DNS e.g. just provide "helio" for "https://mitxpro-helio.sandbox.edx.org")
     ==> ORG (If no value is provided by default the tests will run against MITxPRO)
     ==> BASIC_AUTH_USER
     ==> BASIC_AUTH_PASSWORD
@@ -169,14 +192,29 @@ Before running whitelabel tests please ensure that these environment variables a
     ==> COURSE_ORG (Optional, use only if you are using a value other than specified in ORG var)
 
 
+To run all the tests in the file:
+
+.. code:: bash
+
+    paver e2e_wl_test
 
 To run all the tests in the file:
 
 .. code:: bash
 
-    paver e2e_wl_test whitelabel/test_user_account.py
+    paver e2e_wl_test test_otto_enrollment.py
 
-NOTE: In order to run tests in a particular class or a single test, use the same Nose specifiers as mentioned in the above section. However, do not forget to change the paver target to e2e_wl_test
+To run all the tests in a particular class:
+
+.. code:: bash
+
+    paver e2e_wl_test test_misc.py:TestMisc
+
+To run a single test:
+
+.. code:: bash
+
+    paver e2e_wl_test test_misc.py:TestMisc.test_logos
 
 
 Where and How to add new tests
