@@ -14,7 +14,7 @@ from regression.pages.whitelabel import (
 PASSWORD = os.environ.get('GLOBAL_PASSWORD')
 
 # Client information for access token
-SANDBOX_CLIENT_ID = "ecommerce-key-{}".format(ORG.lower())
+SANDBOX_CLIENT_ID = "ecommerce-key"
 OAUTH_CLIENT_ID = os.environ.get('OAUTH_CLIENT_ID', SANDBOX_CLIENT_ID)
 SANDBOX_CLIENT_SECRET = "ecommerce-secret"
 OAUTH_CLIENT_SECRET = os.environ.get(
@@ -27,7 +27,6 @@ OAUTH_CLIENT_SECRET = os.environ.get(
 
 ECOMMERCE_API_URL = os.path.join(ECOM_URL, 'api/v2/')
 
-
 ENROLLMENT_API_URL = os.path.join(LMS_URL, 'api/enrollment/v1')
 
 CYBERSOURCE_CHECKOUT_URL = \
@@ -35,7 +34,6 @@ CYBERSOURCE_CHECKOUT_URL = \
 
 EMAIL_SENDER_ACCOUNTS = {
     'HarvardMedGlobalAcademy': 'globalacademy@hms.harvard.edu',
-    'HarvardXPLUS': 'hxplus-support@edx.org',
     'MITxPRO': 'mitxpro@mit.edu',
 }
 
@@ -43,7 +41,6 @@ EMAIL_SENDER_ACCOUNT = EMAIL_SENDER_ACCOUNTS[ORG]
 
 LOGO_LINKS = {
     'HarvardMedGlobalAcademy': 'hms-logo',
-    'HarvardXPLUS': 'harvardX-logo',
     'MITxPRO': 'mitx-pro-logo'
 }
 
@@ -51,7 +48,6 @@ LOGO_LINK = LOGO_LINKS[ORG]
 
 LOGO_ALT_TEXTS = {
     'HarvardMedGlobalAcademy': 'HMS Logo',
-    'HarvardXPLUS': 'HarvardX Logo',
     'MITxPRO': 'MIT Logo'
 }
 
@@ -64,10 +60,6 @@ SOCIAL_MEDIA_LINKS = {
         'https://www.linkedin.com/company/harvard-medical-school-global-'
         'education',
         'https://instagram.com/harvardmed/?hl=en'
-    ],
-    'HarvardXPLUS': [
-        'https://www.facebook.com/HarvardX-187429968296722/',
-        'https://twitter.com/harvardonline'
     ],
     'MITxPRO': []
 }
@@ -113,10 +105,10 @@ BILLING_INFO = {
 }
 
 # Existing user email
-EXISTING_USER_EMAIL = 'wl_smoke_user01@example.com'
+# EXISTING_USER_EMAIL = 'wl_smoke_user01@example.com'
 
 # Staff user email
-STAFF_EMAIL = os.environ['STAFF_USER_EMAIL']
+# STAFF_EMAIL = os.environ['STAFF_USER_EMAIL']
 
 # Student user email
 VISUAL_USER_EMAIL = 'wl_visual_test01@example.com'

@@ -26,22 +26,23 @@ BASE_URL = ""
 ECOM_PREFIX = ""
 
 if TEST_ENV == DEFAULT_ENV:
-    STAGE_LMS_BASE_URLS = {
+    BASE_URLS = {
         'edX': u'courses.stage.edx.org',
         'HarvardMedGlobalAcademy': u'globalacademy-stage.hms.harvard.edu',
         'MITxPRO': u'stage.MITxPRO.mit.edu'
     }
 
-    BASE_URL = STAGE_LMS_BASE_URLS[ORG]
+    BASE_URL = BASE_URLS[ORG]
     ECOM_PREFIX = STAGE_ECOM_PREFIX
 
 elif TEST_ENV == "sandbox":
     # Get DNS name if tests are running on sandbox
     TARGET_DNS = os.environ.get("TARGET_DNS")
-    BASE_URL = "{}-{}.sandbox.edx.org".format(
-        ORG,
-        TARGET_DNS
-    )
+    BASE_URLS = {
+        'MITxPRO': "mitxpro-{}.sandbox.edx.org".format(TARGET_DNS),
+        'Harvard': "hms-{}.sandbox.edx.org".format(TARGET_DNS)
+    }
+    BASE_URL = BASE_URLS[ORG]
     ECOM_PREFIX = SANDBOX_ECOM_PREFIX
 
 

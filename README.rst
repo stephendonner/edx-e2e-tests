@@ -179,13 +179,12 @@ How to run Whitelabel tests
 
     ==> TEST_ENV (Only required if tests are not running on stage, e.g. for sandbox just assign value `sandbox')
     ==> TARGET_DNS (Only required if tests are not running on stage, just provide DNS e.g. just provide "helio" for "https://mitxpro-helio.sandbox.edx.org")
-    ==> ORG (If no value is provided by default the tests will run against MITxPRO)
+    ==> ORG (Only valid values for now are "MITxPRO" and "HarvardMedGlobalAcademy", if not provided the tests wil run against MITxPRO by default)
     ==> BASIC_AUTH_USER
     ==> BASIC_AUTH_PASSWORD
     ==> GLOBAL_PASSWORD
-    ==> STAFF_USER_EMAIL
-    ==> OAUTH_CLIENT_ID
-    ==> OAUTH_CLIENT_SECRET
+    ==> OAUTH_CLIENT_ID (Only required for stage or sandbox is not using the default id)
+    ==> OAUTH_CLIENT_SECRET (Only required for stage or sandbox is not using the default secret)
     ==> COURSE_RUN (Optional, use only if you are using a value other than default)
     ==> COURSE_DISPLAY_NAME (Optional, use only if you are using a value other than default)
     ==> COURSE_NUMBER (Optional, use only if you are using a value other than default)
