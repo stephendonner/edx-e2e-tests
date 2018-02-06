@@ -150,20 +150,22 @@ To update page objects installed from external repos:
 How to run Whitelabel tests
 ----------------------------
 
+1. Create a virtual environment fot installation/executing tests.
 
-1. Before running the commands change your working directory to `edx-e2e-tests`.
+
+2. Change your working directory to `edx-e2e-tests`.
 
 .. code:: bash
 
     cd edx-e2e-tests/
 
-2. Install the requirements
+3. Install the requirements
 
 .. code:: bash
 
     pip install -r requirements/base.txt
 
-3. Install the page objects for the application from the edx platform repo. This will
+4. Install the page objects for the application from the edx platform repo. This will
    clone the entire repo into lib/edx-platform so that it can use the page objects and
    helper methods from common/test/acceptance. We also install capa and xmodule into the
    virtual environment from common/lib.
@@ -173,7 +175,7 @@ How to run Whitelabel tests
 
     paver install_pages
 
-4. Set these Environment variables
+5. Set these Environment variables
 
 .. code:: bash
 
